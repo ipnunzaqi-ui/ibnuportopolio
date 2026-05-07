@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Portofolio - IbnuPorto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS DASAR */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { scroll-behavior: smooth; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* NAVBAR */
+        header { background: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 700; text-decoration: none; color: #1f2937; }
+        .logo span { color: #2563eb; }
+        
+        .btn-nav { 
+            background: #2563eb; 
+            color: white !important; 
+            padding: 8px 20px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-nav:hover { background: #1d4ed8; transform: translateY(-2px); }
+
+        /* HERO AREA */
+        .sub-hero { background: #1e293b; padding: 70px 0; color: white; text-align: center; }
+        .sub-hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+        /* GALLERY & CARDS */
+        .gallery-container { padding: 50px 0; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+        .gallery-item {
+            background: white; border-radius: 15px; overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
+            display: flex; flex-direction: column;
+        }
+        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        
+        .img-box { height: 220px; background: #eee; overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .desc-box { padding: 25px; }
+        .desc-box h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; }
+        .desc-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
+        .btn-detail { color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* NEXT PROJECT SECTION */
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background: #ffffff;
+            margin-bottom: 0;
+            border-top: 1px solid #e5e7eb;
+        }
+        .coming-soon h2 { color: #1e293b; font-size: 1.8rem; margin-bottom: 10px; }
+        .coming-soon p { color: #64748b; max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+        .rocket-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+
+        /* MODAL DETAIL */
+        .modal {
+            display: none; position: fixed; z-index: 1000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px); justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-content {
+            background: white; width: 100%; max-width: 600px; border-radius: 20px; 
+            padding: 35px; position: relative; animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header { margin-bottom: 15px; }
+        .modal-header h2 { color: #1e293b; }
+        .modal-body h4 { color: #2563eb; margin: 15px 0 5px; }
+        .modal-body p { color: #4b5563; font-size: 0.95rem; margin-bottom: 25px; }
+        
+        .btn-view-img {
+            background: #2563eb; color: white; border: none; padding: 15px; 
+            border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .btn-view-img:hover { background: #1d4ed8; }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: #000; justify-content: center; align-items: center;
+        }
+        .lightbox img { max-width: 95%; max-height: 90%; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .close-x { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 28px; color: #cbd5e1; }
+
+        /* FOOTER */
+        footer { background: #0f172a; color: white; text-align: center; padding: 60px 0 30px; }
+        footer h2 { font-size: 1.8rem; margin-bottom: 10px; }
+        footer p { opacity: 0.7; margin-bottom: 20px; }
+        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Ibnu<span>Porto</span></a>
+            <nav><a href="index.html" class="btn-nav">Kembali</a></nav>
+        </div>
+    </header>
+
+    <section class="sub-hero">
+        <div class="container">
+            <h1>Karya Program & Project</h1>
+            <p>Penjelasan lengkap mengenai fungsi dan sistem yang saya kembangkan.</p>
+        </div>
+    </section>
+
+    <section class="container gallery-container">
+        <div class="gallery">
+            
+            <div class="gallery-item" onclick="openDetail(0)">
+                <div class="img-box"><img src="program/informasi.png"></div>
+                <div class="desc-box">
+                    <h3>Informasi Manajemen</h3>
+                    <p> Website yang menyajikan informasi memudahkan warga sekolah ataupun pengunjung yang ingin mencari informasi.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(1)">
+                <div class="img-box"><img src="program/voterohis.png"></div>
+                <div class="desc-box">
+                    <h3>Website Pemilihan</h3>
+                    <p>Mendigitalisasi proses voting untuk efisiensi, akurasi, dan penghematan biaya logistik.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(2)">
+                <div class="img-box"><img src="program/perpus.png"></div>
+                <div class="desc-box">
+                    <h3>Website Perpustakaan SMK</h3>
+                    <p>Sistem manajemen buku digital untuk efisiensi peminjaman di sekolah SMK TriDharma 2.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="coming-soon">
+        <div class="container">
+            <span class="rocket-icon">🚀</span>
+            <h2>Terus Berinovasi</h2>
+            <p>Kedepannya bakal terus bertambah program-program yang akan saya buat, See you next time.</p>
+        </div>
+    </section>
+
+    <div id="detailModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModalManual()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Judul Project</h2>
+            </div>
+            <div class="modal-body">
+                <h4>Fungsi Utama:</h4>
+                <p id="modalDesc">Memuat penjelasan...</p>
+                <button class="btn-view-img" onclick="openLightbox()">
+                    Lihat Preview Gambar Full
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="imgLightbox" class="lightbox">
+        <span class="close-x" onclick="closeLightbox()">&times;</span>
+        <img id="fullImg" src="">
+    </div>
+
+    <footer id="kontak">
+        <div class="container">
+            <h2>Mampir</h2>
+            <p>Kunjungi Instagram saya untuk melihat karya lainnya:</p>
+            <a href="https://instagram.com/ibnuzaq1" target="_blank" class="ig-link">@ibnuzaq1</a>
+            <p class="copyright">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const projectData = [
+            {
+                title: "Manajemen Informasi",
+                desc: "Website ini dikembangkan menggunakan PHP dan MySQL. untuk memberikan informasi baik nama guru serta mapel yang di ajar serta jumlah siswa. Berfungsi sebagai media informasi",
+                img: "program/informasi.png"
+            },
+            {
+                title: "Website Pemilihan (E-Voting)",
+                desc: "Website ini dikembangkan menggunakan bahasa pemrograman PHP dengan sistem manajemen database MySQL. Dibangun secara kolaboratif selama 2 minggu, sistem ini dirancang untuk menggantikan metode konvensional berbasis kertas (paperless). Selain ramah lingkungan, sistem e-voting ini mempermudah proses perhitungan suara secara akurat, real-time, dan transparan.",
+                img: "program/voterohis.png"
+            },
+            {
+                title: "Perpustakaan SMK",
+                desc: "Tugas terakhir kelas 12 membuat project untuk UKOM, project ini menggunakan PHP dan MySQL. Fungsinya adalah mendata sirkulasi buku, anggota, serta laporan denda secara otomatis untuk membantu pustakawan SMK TriDharma 2 dalam memanajemen inventaris sekolah.",
+                img: "program/perpus.png"
+            }
+        ];
+
+        let currentActiveImg = "";
+
+        function openDetail(index) {
+            const data = projectData[index];
+            document.getElementById("modalTitle").innerText = data.title;
+            document.getElementById("modalDesc").innerText = data.desc;
+            currentActiveImg = data.img;
+            document.getElementById("detailModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModalManual() {
+            document.getElementById("detailModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function closeModal(e) {
+            document.getElementById("detailModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function openLightbox() {
+            if (currentActiveImg) {
+                document.getElementById("fullImg").src = currentActiveImg;
+                document.getElementById("imgLightbox").style.display = "flex";
+            }
+        }
+
+        function closeLightbox() {
+            document.getElementById("imgLightbox").style.display = "none";
+        }
+    </script>
+</body>
+</html>

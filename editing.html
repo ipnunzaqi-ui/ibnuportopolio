@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Portofolio Editing - IbnuPorto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        header { background: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 700; text-decoration: none; color: #1f2937; }
+        .logo span { color: #2563eb; }
+        .btn-nav { background: #2563eb; color: white !important; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .btn-nav:hover { background: #1d4ed8; transform: translateY(-2px); }
+
+        .sub-hero { background: #1e293b; padding: 70px 0; color: white; text-align: center; }
+        .sub-hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+        .gallery-container { padding: 50px 0; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+        .gallery-item {
+            background: white; border-radius: 15px; overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
+            display: flex; flex-direction: column;
+        }
+        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .img-box { height: 220px; background: #eee; overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .desc-box { padding: 25px; }
+        .desc-box h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; }
+        .desc-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
+        .btn-detail { color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .coming-soon { text-align: center; padding: 60px 20px; background: #ffffff; border-top: 1px solid #e5e7eb; }
+        .rocket-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+
+        .modal {
+            display: none; position: fixed; z-index: 1000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px); justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-content {
+            background: white; width: 100%; max-width: 600px; border-radius: 20px; 
+            padding: 35px; position: relative; animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 28px; color: #cbd5e1; }
+        .btn-view-img {
+            background: #2563eb; color: white; border: none; padding: 15px; 
+            border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; margin-top: 20px;
+        }
+
+        .lightbox {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: #000; justify-content: center; align-items: center;
+        }
+        .lightbox img { max-width: 95%; max-height: 90%; }
+        .close-x { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+
+        footer { background: #0f172a; color: white; text-align: center; padding: 60px 0 30px; }
+        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 600; }
+        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Ibnu<span>Porto</span></a>
+            <nav><a href="index.html" class="btn-nav">Kembali</a></nav>
+        </div>
+    </header>
+
+    <section class="sub-hero">
+        <div class="container">
+            <h1>Karya Editing Gambar</h1>
+            <p>Eksplorasi desain visual, manipulasi foto, dan pembuatan aset kreatif digital.</p>
+        </div>
+    </section>
+
+    <section class="container gallery-container">
+        <div class="gallery">
+            <div class="gallery-item" onclick="openDetail(0)">
+                <div class="img-box"><img src="editing/1.JPG"></div>
+                <div class="desc-box">
+                    <h3>Hari Batik Nasional</h3>
+                    <p>Desain poster ucapan yang memadukan elemen tradisional dengan gaya desain modern.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(1)">
+                <div class="img-box"><img src="editing/Selamat2.png"></div>
+                <div class="desc-box">
+                    <h3>Hari Batik Nasional (V2)</h3>
+                    <p>Desain poster ucapan alternatif dengan fokus tipografi yang kuat.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(2)">
+                <div class="img-box"><img src="editing/2.png"></div>
+                <div class="desc-box">
+                    <h3>Flyer Promosi 1</h3>
+                    <p>Design halaman depan untuk promosi perpustakaan hasil kolaborasi tim PKL.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(3)">
+                <div class="img-box"><img src="editing/3.png"></div>
+                <div class="desc-box">
+                    <h3>Flyer Promosi 2</h3>
+                    <p>Layout halaman informasi dengan elemen desain yang elegan dan profesional.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(4)">
+                <div class="img-box"><img src="editing/sertifikat.png"></div>
+                <div class="desc-box">
+                    <h3>Sertifikat Apresiasi</h3>
+                    <p>Project sertifikat formal untuk anggota dan pengurus organisasi Rohis.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(5)">
+                <div class="img-box"><img src="editing/rohis.png"></div>
+                <div class="desc-box">
+                    <h3>Content</h3>
+                    <p>Content instagram eskul rohis.</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(6)">
+                <div class="img-box"><img src="editing/Ketut Susilo.png"></div>
+                <div class="desc-box">
+                    <h3>Content</h3>
+                    <p>Content instagram eskul rohis</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openDetail(7)">
+                <div class="img-box"><img src="editing/qurban.png"></div>
+                <div class="desc-box">
+                    <h3>Content</h3>
+                    <p>Content instagram eskul rohis</p>
+                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="coming-soon">
+        <div class="container">
+            <span class="rocket-icon">🚀</span>
+            <h2>Eksplorasi Tanpa Batas</h2>
+            <p>Kedepannya bakal terus bertambah karya-karya editing yang akan saya buat.</p>
+        </div>
+    </section>
+
+    <div id="detailModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModalManual()">&times;</span>
+            <div class="modal-header"><h2 id="modalTitle">Judul Karya</h2></div>
+            <div class="modal-body">
+                <h4>Penjelasan Karya:</h4>
+                <p id="modalDesc">Memuat penjelasan...</p>
+                <button class="btn-view-img" onclick="openLightbox()">Lihat Hasil Editing Full</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="imgLightbox" class="lightbox">
+        <span class="close-x" onclick="closeLightbox()">&times;</span>
+        <img id="fullImg" src="">
+    </div>
+
+    <footer>
+        <div class="container">
+            <h2>Mampir</h2>
+            <p>Kunjungi Instagram saya:</p>
+            <a href="https://instagram.com/ibnuzaq1" target="_blank" class="ig-link">@ibnuzaq1</a>
+            <p class="copyright">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const projectData = [
+            { title: "Hari Batik Nasional", desc: "Karya ini dibuat untuk memperingati hari batik dengan menggabungkan teknik manipulasi foto dan tipografi. Tugas PKL di Perpustakaan Pertanian Kota Bogor.", img: "editing/1.JPG" },
+            { title: "Hari Batik Nasional (V2)", desc: "Versi alternatif desain batik dengan penekanan pada visual yang lebih dinamis.", img: "editing/Selamat2.png" },
+            { title: "Flyer Promosi 1", desc: "Design halaman depan untuk promosi perpustakaan hasil kolaborasi bersama teman PKL.", img: "editing/2.png" },
+            { title: "Flyer Promosi 2", desc: "Layout sertifikat/flyer formal dengan sentuhan elemen desain yang elegan.", img: "editing/3.png" },
+            { title: "Sertifikat Apresiasi", desc: "Project sertifikat untuk anggota Rohis yang ditanda tangani langsung oleh pembina.", img: "editing/sertifikat.png" },
+            { title: "Content", desc: "Dibuat dengan aplikasi canva, dengan jumlah 5 halaman namun untuk saat ini saya hanya menampilkan judul kontennya.", img: "editing/rohis.png" },
+            { title: "Content Rohis", desc: "Dibuat dengan aplikasi canva, dengan jumlah 5 halaman namun untuk saat ini saya hanya menampilkan judul kontennya.", img: "editing/Ketut Susilo.png" },
+            { title: "Content Rohis", desc: "Dibuat dengan aplikasi canva, dengan jumlah 5 halaman namun untuk saat ini saya hanya menampilkan judul kontennya.", img: "editing/qurban.png" }
+        ];
+
+        let currentActiveImg = "";
+
+        function openDetail(index) {
+            const data = projectData[index];
+            document.getElementById("modalTitle").innerText = data.title;
+            document.getElementById("modalDesc").innerText = data.desc;
+            currentActiveImg = data.img;
+            document.getElementById("detailModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModalManual() {
+            document.getElementById("detailModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function closeModal(e) {
+            if (e.target.id === "detailModal") closeModalManual();
+        }
+
+        function openLightbox() {
+            if (currentActiveImg) {
+                document.getElementById("fullImg").src = currentActiveImg;
+                document.getElementById("imgLightbox").style.display = "flex";
+            }
+        }
+
+        function closeLightbox() {
+            document.getElementById("imgLightbox").style.display = "none";
+        }
+    </script>
+</body>
+</html>
