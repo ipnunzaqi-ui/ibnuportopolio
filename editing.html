@@ -6,66 +6,120 @@
     <title>Detail Portofolio Editing - IbnuPorto</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS DASAR */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
+        body { scroll-behavior: smooth; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        header { background: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* NAVBAR MODERN GLASSMORPHISM (Match dengan Home) */
+        header { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa) 1;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); 
+        }
         .navbar { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.4rem; font-weight: 700; text-decoration: none; color: #1f2937; }
+        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: #1f2937; }
         .logo span { color: #2563eb; }
-        .btn-nav { background: #2563eb; color: white !important; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        
+        .btn-nav { 
+            background: #2563eb; 
+            color: white !important; 
+            padding: 8px 25px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.85rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
         .btn-nav:hover { background: #1d4ed8; transform: translateY(-2px); }
 
-        .sub-hero { background: #1e293b; padding: 70px 0; color: white; text-align: center; }
-        .sub-hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        /* HERO AREA */
+        .sub-hero { 
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            padding: 120px 0 70px; 
+            color: white; 
+            text-align: center; 
+        }
+        .sub-hero h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        .sub-hero p { opacity: 0.8; letter-spacing: 1px; }
 
-        .gallery-container { padding: 50px 0; }
+        /* GALLERY & CARDS */
+        .gallery-container { padding: 60px 0; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
         .gallery-item {
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
-            display: flex; flex-direction: column;
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.4s; cursor: pointer;
+            display: flex; flex-direction: column; border: 1px solid #eee;
         }
-        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
-        .img-box { height: 220px; background: #eee; overflow: hidden; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .img-box { height: 220px; background: #e5e7eb; overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover .img-box img { transform: scale(1.1); }
+        
         .desc-box { padding: 25px; }
-        .desc-box h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; }
+        .desc-box h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; }
         .desc-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
-        .btn-detail { color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .btn-detail { 
+            color: #2563eb; 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .gallery-item:hover .btn-detail { border-bottom: 2px solid #2563eb; }
 
+        /* COMING SOON SECTION */
         .coming-soon { text-align: center; padding: 60px 20px; background: #ffffff; border-top: 1px solid #e5e7eb; }
         .rocket-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
+        /* MODAL & LIGHTBOX */
         .modal {
-            display: none; position: fixed; z-index: 1000; top: 0; left: 0; 
-            width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85);
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(8px); justify-content: center; align-items: center; padding: 20px;
         }
         .modal-content {
-            background: white; width: 100%; max-width: 600px; border-radius: 20px; 
-            padding: 35px; position: relative; animation: slideUp 0.3s ease;
+            background: white; width: 100%; max-width: 600px; border-radius: 25px; 
+            padding: 40px; position: relative; animation: slideUp 0.4s ease;
         }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 28px; color: #cbd5e1; }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 30px; color: #cbd5e1; transition: 0.3s; }
+        .close-modal:hover { color: #ef4444; }
+
         .btn-view-img {
-            background: #2563eb; color: white; border: none; padding: 15px; 
-            border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;
-            display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; margin-top: 20px;
+            background: #1e293b; color: white; border: none; padding: 15px; 
+            border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%;
+            margin-top: 25px; transition: 0.3s;
         }
+        .btn-view-img:hover { background: #334155; }
 
         .lightbox {
-            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            display: none; position: fixed; z-index: 3000; top: 0; left: 0; 
             width: 100%; height: 100%; background: #000; justify-content: center; align-items: center;
         }
-        .lightbox img { max-width: 95%; max-height: 90%; }
-        .close-x { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .lightbox img { max-width: 90%; max-height: 85%; border-radius: 10px; }
+        .close-x { position: absolute; top: 30px; right: 40px; color: white; font-size: 50px; cursor: pointer; }
 
+        /* FOOTER */
         footer { background: #0f172a; color: white; text-align: center; padding: 60px 0 30px; }
-        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 600; }
-        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.3; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -80,81 +134,81 @@
     <section class="sub-hero">
         <div class="container">
             <h1>Karya Editing Gambar</h1>
-            <p>Eksplorasi desain visual, manipulasi foto, dan pembuatan aset kreatif digital.</p>
+            <p>Eksplorasi desain visual, manipulasi foto, dan aset kreatif digital.</p>
         </div>
     </section>
 
     <section class="container gallery-container">
         <div class="gallery">
             <div class="gallery-item" onclick="openDetail(0)">
-                <div class="img-box"><img src="editing/1.JPG"></div>
+                <div class="img-box"><img src="editing/1.JPG" alt="Hari Batik"></div>
                 <div class="desc-box">
                     <h3>Hari Batik Nasional</h3>
-                    <p>Desain poster ucapan yang memadukan elemen tradisional dengan gaya desain modern.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <p>Desain poster ucapan yang memadukan elemen tradisional dengan gaya modern.</p>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(1)">
-                <div class="img-box"><img src="editing/Selamat2.png"></div>
+                <div class="img-box"><img src="editing/Selamat2.png" alt="Hari Batik V2"></div>
                 <div class="desc-box">
                     <h3>Hari Batik Nasional (V2)</h3>
                     <p>Desain poster ucapan alternatif dengan fokus tipografi yang kuat.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(2)">
-                <div class="img-box"><img src="editing/2.png"></div>
+                <div class="img-box"><img src="editing/2.png" alt="Flyer 1"></div>
                 <div class="desc-box">
                     <h3>Flyer Promosi 1</h3>
                     <p>Design halaman depan untuk promosi perpustakaan hasil kolaborasi tim PKL.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(3)">
-                <div class="img-box"><img src="editing/3.png"></div>
+                <div class="img-box"><img src="editing/3.png" alt="Flyer 2"></div>
                 <div class="desc-box">
                     <h3>Flyer Promosi 2</h3>
                     <p>Layout halaman informasi dengan elemen desain yang elegan dan profesional.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(4)">
-                <div class="img-box"><img src="editing/sertifikat.png"></div>
+                <div class="img-box"><img src="editing/sertifikat.png" alt="Sertifikat"></div>
                 <div class="desc-box">
                     <h3>Sertifikat Apresiasi</h3>
                     <p>Project sertifikat formal untuk anggota dan pengurus organisasi Rohis.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(5)">
-                <div class="img-box"><img src="editing/rohis.png"></div>
+                <div class="img-box"><img src="editing/rohis.png" alt="Content 1"></div>
                 <div class="desc-box">
-                    <h3>Content</h3>
-                    <p>Content instagram eskul rohis.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <h3>Instagram Content</h3>
+                    <p>Asset visual kreatif untuk keperluan konten feed Instagram organisasi.</p>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(6)">
-                <div class="img-box"><img src="editing/Ketut Susilo.png"></div>
+                <div class="img-box"><img src="editing/Ketut Susilo.png" alt="Content 2"></div>
                 <div class="desc-box">
-                    <h3>Content</h3>
-                    <p>Content instagram eskul rohis</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <h3>Content Rohis</h3>
+                    <p>Desain edukasi islami yang interaktif untuk audiens media sosial.</p>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(7)">
-                <div class="img-box"><img src="editing/qurban.png"></div>
+                <div class="img-box"><img src="editing/qurban.png" alt="Content 3"></div>
                 <div class="desc-box">
-                    <h3>Content</h3>
-                    <p>Content instagram eskul rohis</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <h3>Poster Qurban</h3>
+                    <p>Desain pengumuman hari besar keagamaan dengan visual yang bersih.</p>
+                    <div class="btn-detail">Lihat Detail ℹ️</div>
                 </div>
             </div>
         </div>
@@ -164,18 +218,18 @@
         <div class="container">
             <span class="rocket-icon">🚀</span>
             <h2>Eksplorasi Tanpa Batas</h2>
-            <p>Kedepannya bakal terus bertambah karya-karya editing yang akan saya buat.</p>
+            <p>Koleksi ini akan terus bertambah seiring dengan project kreatif baru saya.</p>
         </div>
     </section>
 
     <div id="detailModal" class="modal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeModalManual()">&times;</span>
-            <div class="modal-header"><h2 id="modalTitle">Judul Karya</h2></div>
+            <div class="modal-header"><h2 id="modalTitle" style="color:#1e293b; margin-bottom:10px;">Judul Karya</h2></div>
             <div class="modal-body">
-                <h4>Penjelasan Karya:</h4>
-                <p id="modalDesc">Memuat penjelasan...</p>
-                <button class="btn-view-img" onclick="openLightbox()">Lihat Hasil Editing Full</button>
+                <h4 style="color:#2563eb; margin-bottom:5px;">Penjelasan Karya:</h4>
+                <p id="modalDesc" style="color:#64748b; font-size:0.95rem;"></p>
+                <button class="btn-view-img" onclick="openLightbox()">Lihat Hasil Editing Full Screen</button>
             </div>
         </div>
     </div>
@@ -187,8 +241,8 @@
 
     <footer>
         <div class="container">
-            <h2>Mampir</h2>
-            <p>Kunjungi Instagram saya:</p>
+            <h2 style="margin-bottom:10px;">Mari Berteman</h2>
+            <p style="opacity:0.7; margin-bottom:20px;">Ikuti update karya saya di Instagram:</p>
             <a href="https://instagram.com/ibnuzaq1" target="_blank" class="ig-link">@ibnuzaq1</a>
             <p class="copyright">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
         </div>
@@ -196,14 +250,14 @@
 
     <script>
         const projectData = [
-            { title: "Hari Batik Nasional", desc: "Karya ini dibuat untuk memperingati hari batik dengan menggabungkan teknik manipulasi foto dan tipografi. Tugas PKL di Perpustakaan Pertanian Kota Bogor.", img: "editing/1.JPG" },
-            { title: "Hari Batik Nasional (V2)", desc: "Versi alternatif desain batik dengan penekanan pada visual yang lebih dinamis.", img: "editing/Selamat2.png" },
-            { title: "Flyer Promosi 1", desc: "Design halaman depan untuk promosi perpustakaan hasil kolaborasi bersama teman PKL.", img: "editing/2.png" },
-            { title: "Flyer Promosi 2", desc: "Layout sertifikat/flyer formal dengan sentuhan elemen desain yang elegan.", img: "editing/3.png" },
-            { title: "Sertifikat Apresiasi", desc: "Project sertifikat untuk anggota Rohis yang ditanda tangani langsung oleh pembina.", img: "editing/sertifikat.png" },
-            { title: "Content", desc: "Dibuat dengan aplikasi canva, dengan jumlah 5 halaman namun untuk saat ini saya hanya menampilkan judul kontennya.", img: "editing/rohis.png" },
-            { title: "Content Rohis", desc: "Dibuat dengan aplikasi canva, dengan jumlah 5 halaman namun untuk saat ini saya hanya menampilkan judul kontennya.", img: "editing/Ketut Susilo.png" },
-            { title: "Content Rohis", desc: "Dibuat dengan aplikasi canva, dengan jumlah 5 halaman namun untuk saat ini saya hanya menampilkan judul kontennya.", img: "editing/qurban.png" }
+            { title: "Hari Batik Nasional", desc: "Karya ini dibuat untuk memperingati hari batik dengan menggabungkan teknik manipulasi foto dan tipografi. Dibuat saat menjalankan masa PKL di Perpustakaan Pertanian Kota Bogor.", img: "editing/1.JPG" },
+            { title: "Hari Batik Nasional (V2)", desc: "Versi alternatif dengan visual yang lebih cerah, menonjolkan motif batik sebagai latar belakang utama yang dinamis.", img: "editing/Selamat2.png" },
+            { title: "Flyer Promosi 1", desc: "Desain flyer promosi layanan perpustakaan, dikerjakan secara kolaboratif untuk meningkatkan minat baca pengunjung.", img: "editing/2.png" },
+            { title: "Flyer Promosi 2", desc: "Layout informasi program kerja dengan gaya desain elegan yang mengutamakan keterbacaan data.", img: "editing/3.png" },
+            { title: "Sertifikat Apresiasi", desc: "Desain sertifikat penghargaan resmi untuk organisasi Rohis, dikerjakan dengan standar desain formal yang rapi.", img: "editing/sertifikat.png" },
+            { title: "Instagram Content", desc: "Dibuat menggunakan Canva, mencakup 5 halaman konten edukatif. Saat ini hanya ditampilkan sampul utamanya saja.", img: "editing/rohis.png" },
+            { title: "Content Rohis", desc: "Konten dakwah visual untuk media sosial, dirancang agar pesan tersampaikan dengan cara yang estetik dan modern.", img: "editing/Ketut Susilo.png" },
+            { title: "Poster Qurban", desc: "Visualisasi informasi hari raya Idul Adha untuk kebutuhan publikasi digital organisasi.", img: "editing/qurban.png" }
         ];
 
         let currentActiveImg = "";

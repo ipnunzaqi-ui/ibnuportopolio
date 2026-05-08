@@ -11,28 +11,60 @@
         body { scroll-behavior: smooth; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* HEADER & NAVBAR */
-        header { background: rgba(255, 255, 255, 0.95); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        /* NAVBAR MODERN GLASSMORPHISM */
+        header { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa) 1;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); 
+        }
         .navbar { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: #1f2937; }
-        .logo span { color: #2563eb; }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a { text-decoration: none; color: #1f2937; font-weight: 500; transition: 0.3s; }
-        nav ul li a:hover { color: #2563eb; }
+        .logo { font-size: 1.6rem; font-weight: 800; text-decoration: none; color: #1e293b; letter-spacing: -1px; }
+        .logo span { color: #2563eb; text-shadow: 0 0 15px rgba(37, 99, 235, 0.2); }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            background: rgba(255, 255, 255, 0.5);
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        nav ul li { margin: 0 5px; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: #4b5563; 
+            font-weight: 600; 
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: 0.3s all ease; 
+        }
+        nav ul li a:hover { 
+            color: white; 
+            background: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
 
         /* HERO SECTION */
         .hero { height: 80vh; display: flex; align-items: center; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; padding-top: 80px; text-align: center; }
         .hero-content { width: 100%; }
         .hero h2 { font-size: 3rem; margin-bottom: 10px; }
         .hero h2 span { color: #3b82f6; }
-        .hero p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 25px; letter-spacing: 1px; }
+        .hero p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 25px; letter-spacing: 2px; text-transform: uppercase; }
         
         /* SECTION STYLES */
         .section-title { text-align: center; font-size: 2.2rem; margin: 60px 0 40px; position: relative; }
         .section-title::after { content: ''; width: 60px; height: 4px; background: #2563eb; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
 
-        /* ABOUT / MOTIVATION SECTION */
+        /* ABOUT SECTION */
         .about-section { padding: 80px 0; background: white; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
         .motto-card { background: #eff6ff; padding: 30px; border-left: 5px solid #2563eb; border-radius: 10px; }
@@ -51,12 +83,14 @@
         .portfolio-info { padding: 25px; }
         .tag { display: inline-block; padding: 4px 12px; background: #eff6ff; color: #2563eb; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 
-        /* BUTTONS */
-        .btn { display: inline-block; padding: 12px 30px; background: #2563eb; color: white; text-decoration: none; border-radius: 8px; transition: 0.3s; font-weight: 600; border: none; cursor: pointer; }
-        .btn:hover { background: #1d4ed8; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        /* EKSPLORASI SECTION */
+        .exploration-section { padding: 100px 0; background: #ffffff; text-align: center; }
+        .exploration-section h2 { font-size: 2.2rem; margin-bottom: 15px; color: #1e293b; }
+        .exploration-section p { color: #64748b; max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
 
-        /* FOOTER */
+        /* FOOTER (Mari Berteman) */
         footer { background: #0f172a; color: white; text-align: center; padding: 80px 0 40px; }
+        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
         .copyright { margin-top: 50px; font-size: 0.85rem; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
         /* RESPONSIVE */
@@ -71,13 +105,13 @@
 
     <header>
         <div class="container navbar">
-            <a href="#" class="logo">Ibnu<span>Porto</span></a>
+            <a href="#" class="logo">Portofolio<span>ibnuz</span></a>
             <nav>
                 <ul>
                     <li><a href="#beranda">Beranda</a></li>
                     <li><a href="#tentang">Tentang</a></li>
                     <li><a href="#karya">Karya</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#eksplorasi">Eksplorasi</a></li>
                 </ul>
             </nav>
         </div>
@@ -87,8 +121,8 @@
         <div class="container">
             <div class="hero-content">
                 <h2>Halo, Saya <span>Ibnu Zaqi</span></h2>
-                <p>FOTOGRAFI | EDITOR | WEB DEVELOPER</p>
-                <a href="#karya" class="btn">Lihat Portofolio</a>
+                <p>Fotografi | Editor | Web Developer</p>
+                <a href="#karya" class="btn" style="display: inline-block; padding: 12px 30px; background: #2563eb; color: white; text-decoration: none; border-radius: 8px; transition: 0.3s; font-weight: 600;">Lihat Portofolio</a>
             </div>
         </div>
     </section>
@@ -99,19 +133,18 @@
             <div class="about-grid">
                 <div class="motto-card">
                     <h3>Motto & Motivasi</h3>
-                    <p>"Jadilah Dirimu Sendiri, "Motivasi Saya Adalah Belajar Dari Kesalahan, Diam, Dan Buktikan Kepada Mereka Yang Suka Merendahkan"</p>
+                    <p>"Jadilah Dirimu Sendiri. Motivasi Saya Adalah Belajar Dari Kesalahan, Diam, Dan Buktikan Kepada Mereka Yang Suka Merendahkan."</p>
                     <p style="margin-top: 10px; font-style: italic; color: #2563eb;">— Ibnu Zaqi</p>
                 </div>
                 <div>
                     <h3>Hobby & Minat</h3>
-                    <p>Saya memiliki beberapa kegemaran yang mendukung kreativitas saya:</p>
                     <div class="hobby-list">
                         <div class="hobby-item"><span>📸</span> Fotografi</div>
                         <div class="hobby-item"><span>🎨</span> Editing</div>
                         <div class="hobby-item"><span>💻</span> Coding</div>
                         <div class="hobby-item"><span>🐾</span> Pelihara Hewan</div>
                         <div class="hobby-item"><span>🚀</span> Hal-hal Baru</div>
-                        <div class="hobby-item"><span>🎭</span> Membuat Kerajinan</div>
+                        <div class="hobby-item"><span>🎭</span> Kerajinan</div>
                     </div>
                 </div>
             </div>
@@ -121,7 +154,6 @@
     <section id="karya" class="container">
         <h2 class="section-title">Karya Terbaru</h2>
         <div class="portfolio-grid">
-            
             <a href="editing.html" class="portfolio-link">
                 <div class="portfolio-item">
                     <div class="portfolio-img">
@@ -143,17 +175,27 @@
                     <div class="portfolio-info">
                         <span class="tag">Development</span>
                         <h3>💻 Pemrograman</h3>
-                        <p>Pengembangan project website baik lainnya.</p>
+                        <p>Pengembangan project website berbasis PHP & MySQL.</p>
                     </div>
                 </div>
             </a>
-
         </div>
     </section>
 
-    <footer id="kontak">
+    <!-- SECTION EKSPLORASI (Terpisah) -->
+    <section id="eksplorasi" class="exploration-section">
         <div class="container">
-            <h2>Terimakasih</h2>
+            <h2>🚀 Eksplorasi</h2>
+            <p>Terus belajar dan mencoba hal-hal baru untuk mengasah kreativitas serta kemampuan teknis di dunia digital.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER (Mari Berteman) -->
+    <footer>
+        <div class="container">
+            <h2 style="margin-bottom:10px;">Mari Berteman</h2>
+            <p style="opacity:0.7; margin-bottom:20px;">Ikuti update karya saya di Instagram:</p>
+            <a href="https://instagram.com/ibnuzaq1" target="_blank" class="ig-link">@ibnuzaq1</a>
             <p class="copyright">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
         </div>
     </footer>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Portofolio - IbnuPorto</title>
+    <title>Detail Portofolio Program - IbnuPorto</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS DASAR */
@@ -11,185 +11,219 @@
         body { scroll-behavior: smooth; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* NAVBAR */
-        header { background: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* NAVBAR MODERN GLASSMORPHISM */
+        header { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa) 1;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); 
+        }
         .navbar { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.4rem; font-weight: 700; text-decoration: none; color: #1f2937; }
+        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: #1f2937; }
         .logo span { color: #2563eb; }
         
         .btn-nav { 
             background: #2563eb; 
             color: white !important; 
-            padding: 8px 20px; 
-            border-radius: 6px; 
+            padding: 8px 25px; 
+            border-radius: 50px; 
             text-decoration: none; 
             font-weight: 600; 
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
         }
         .btn-nav:hover { background: #1d4ed8; transform: translateY(-2px); }
 
         /* HERO AREA */
-        .sub-hero { background: #1e293b; padding: 70px 0; color: white; text-align: center; }
-        .sub-hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        .sub-hero { 
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            padding: 120px 0 70px; 
+            color: white; 
+            text-align: center; 
+        }
+        .sub-hero h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        .sub-hero p { opacity: 0.8; letter-spacing: 1px; }
 
         /* GALLERY & CARDS */
-        .gallery-container { padding: 50px 0; }
+        .gallery-container { padding: 60px 0; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
         .gallery-item {
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
-            display: flex; flex-direction: column;
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.4s; cursor: pointer;
+            display: flex; flex-direction: column; border: 1px solid #eee;
         }
-        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .gallery-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         
-        .img-box { height: 220px; background: #eee; overflow: hidden; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .img-box { height: 220px; background: #e5e7eb; overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover .img-box img { transform: scale(1.1); }
         
-        .desc-box { padding: 25px; }
-        .desc-box h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; }
-        .desc-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
+        .desc-box { padding: 30px; }
+        .desc-box h3 { font-size: 1.3rem; color: #1e293b; margin-bottom: 12px; font-weight: 700; }
+        .desc-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; line-height: 1.6; }
         
-        .btn-detail { color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
-        
-        /* STYLE LINK KUNJUNGI */
         .external-link {
-            display: inline-block;
-            margin-bottom: 12px;
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
             color: #2563eb;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
-            border: 1px solid #2563eb;
-            padding: 8px 15px;
-            border-radius: 5px;
+            border: 2px solid #2563eb;
+            padding: 10px;
+            border-radius: 12px;
             transition: 0.3s;
-            text-align: center;
         }
         .external-link:hover {
             background: #2563eb;
             color: white;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
 
-        /* NEXT PROJECT SECTION */
-        .coming-soon {
+        .btn-detail { 
+            color: #94a3b8; 
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
             text-align: center;
-            padding: 60px 20px;
-            background: #ffffff;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+            transition: 0.3s;
         }
-        .coming-soon h2 { color: #1e293b; font-size: 1.8rem; margin-bottom: 10px; }
-        .rocket-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .gallery-item:hover .btn-detail { color: #2563eb; }
 
-        /* MODAL DETAIL */
+        /* SECTION EKSPLORASI (Latar Belakang Putih) */
+        .exploration-section { 
+            text-align: center; 
+            padding: 100px 20px; 
+            background: #ffffff; 
+            border-top: 1px solid #e5e7eb; 
+        }
+        .code-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .exploration-section h2 { font-size: 2rem; color: #1e293b; margin-bottom: 10px; }
+        .exploration-section p { color: #64748b; max-width: 600px; margin: 0 auto; }
+
+        /* MODAL & LIGHTBOX */
         .modal {
-            display: none; position: fixed; z-index: 1000; top: 0; left: 0; 
-            width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85);
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(8px); justify-content: center; align-items: center; padding: 20px;
         }
         .modal-content {
-            background: white; width: 100%; max-width: 600px; border-radius: 20px; 
-            padding: 35px; position: relative; animation: slideUp 0.3s ease;
+            background: white; width: 100%; max-width: 600px; border-radius: 25px; 
+            padding: 40px; position: relative; animation: slideUp 0.4s ease;
         }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 28px; color: #cbd5e1; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
-        .btn-view-img {
-            background: #2563eb; color: white; border: none; padding: 15px; 
-            border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;
-            margin-top: 20px; transition: 0.3s;
-        }
+        .close-modal { position: absolute; top: 25px; right: 25px; cursor: pointer; font-size: 30px; color: #cbd5e1; transition: 0.3s; }
+        .close-modal:hover { color: #ef4444; }
 
-        /* LIGHTBOX */
+        .btn-view-img { 
+            background: #1e293b; color: white; border: none; padding: 15px; 
+            border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%;
+            margin-top: 25px; transition: 0.3s; 
+        }
+        .btn-view-img:hover { background: #334155; }
+
         .lightbox {
-            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            display: none; position: fixed; z-index: 3000; top: 0; left: 0; 
             width: 100%; height: 100%; background: #000; justify-content: center; align-items: center;
         }
-        .lightbox img { max-width: 95%; max-height: 90%; }
-        .close-x { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .lightbox img { max-width: 90%; max-height: 85%; border-radius: 10px; }
+        .close-x { position: absolute; top: 30px; right: 40px; color: white; font-size: 50px; cursor: pointer; }
 
-        footer { background: #0f172a; color: white; text-align: center; padding: 60px 0 30px; }
-        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 600; }
+        /* FOOTER (Latar Belakang Gelap) */
+        footer { background: #0f172a; color: white; text-align: center; padding: 80px 0 30px; }
+        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.3; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        
+        @media (max-width: 768px) {
+            .sub-hero h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container navbar">
-            <a href="/" class="logo">Ibnu<span>Porto</span></a>
-            <nav><a href="https://instagram.com/ibnuzaq1" class="btn-nav">Kontak Saya</a></nav>
+            <a href="index.html" class="logo">Ibnu<span>Porto</span></a>
+            <nav><a href="index.html" class="btn-nav">Kembali</a></nav>
         </div>
     </header>
 
     <section class="sub-hero">
         <div class="container">
             <h1>Karya Program & Project</h1>
-            <p>Satu Domain, Tiga Website. Semua sistem dikembangkan secara mandiri.</p>
+            <p>Eksplorasi sistem digital berbasis PHP & MySQL.</p>
         </div>
     </section>
 
     <section class="container gallery-container">
         <div class="gallery">
-            
-            <div class="gallery-item" onclick="openDetail(0)">
-                <div class="img-box"><img src="program/informasi.png" alt="Informasi Manajemen"></div>
+            <!-- Project 1 -->
+            <div class="gallery-item">
+                <div class="img-box" onclick="openDetail(0)"><img src="program/informasi.png" alt="Informasi Manajemen"></div>
                 <div class="desc-box">
                     <h3>Informasi Manajemen</h3>
-                    <p>Website penyaji data guru dan siswa menggunakan PHP & MySQL.</p>
-                    
-                    <a href="/manajinfor/" class="external-link" onclick="event.stopPropagation();">
-                        Kunjungi Website 🔗
-                    </a>
-                    <div class="btn-detail">Info Detail ℹ️</div>
+                    <p>Website penyaji informasi warga sekolah yang memudahkan pencarian data guru & siswa.</p>
+                    <a href="https://ibnu.infinityfreeapp.com/manajinfor/" target="_blank" class="external-link">Kunjungi Website 🔗</a>
+                    <div class="btn-detail" onclick="openDetail(0)">Selengkapnya Info ℹ️</div>
                 </div>
             </div>
 
-            <div class="gallery-item" onclick="openDetail(1)">
-                <div class="img-box"><img src="program/voterohis.png" alt="Website Pemilihan"></div>
+            <!-- Project 2 -->
+            <div class="gallery-item">
+                <div class="img-box" onclick="openDetail(1)"><img src="program/voterohis.png" alt="Website Pemilihan"></div>
                 <div class="desc-box">
-                    <h3>Website Pemilihan (Rohis)</h3>
-                    <p>Sistem E-Voting digital untuk proses pemilihan yang transparan dan real-time.</p>
-                    
-                    <a href="/rohisvote/" class="external-link" onclick="event.stopPropagation();">
-                        Kunjungi Website 🔗
-                    </a>
-                    <div class="btn-detail">Info Detail ℹ️</div>
+                    <h3>Website Pemilihan (E-Voting)</h3>
+                    <p>Sistem E-Voting digital untuk efisiensi, akurasi, dan transparansi pemungutan suara.</p>
+                    <a href="https://ibnu.infinityfreeapp.com/rohisvote/" target="_blank" class="external-link">Kunjungi Website 🔗</a>
+                    <div class="btn-detail" onclick="openDetail(1)">Selengkapnya Info ℹ️</div>
                 </div>
             </div>
 
-            <div class="gallery-item" onclick="openDetail(2)">
-                <div class="img-box"><img src="program/perpus.png" alt="Website Perpustakaan"></div>
+            <!-- Project 3 -->
+            <div class="gallery-item">
+                <div class="img-box" onclick="openDetail(2)"><img src="program/perpus.png" alt="Website Perpustakaan"></div>
                 <div class="desc-box">
-                    <h3>Website Perpustakaan SMK</h3>
-                    <p>Manajemen sirkulasi buku dan denda otomatis untuk SMK TriDharma 2.</p>
-                    
-                    <a href="/perpus/" class="external-link" onclick="event.stopPropagation();">
-                        Kunjungi Website 🔗
-                    </a>
-                    <div class="btn-detail">Info Detail ℹ️</div>
+                    <h3>Perpustakaan SMK</h3>
+                    <p>Manajemen buku digital dan sistem denda otomatis untuk efisiensi sekolah.</p>
+                    <a href="https://ibnu.infinityfreeapp.com/perpus/" target="_blank" class="external-link">Kunjungi Website 🔗</a>
+                    <div class="btn-detail" onclick="openDetail(2)">Selengkapnya Info ℹ️</div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <section class="coming-soon">
+    <!-- SECTION EKSPLORASI (LATAR PUTIH) -->
+    <section class="exploration-section">
         <div class="container">
-            <span class="rocket-icon">🚀</span>
-            <h2>Terus Berinovasi</h2>
-            <p>Kedepannya bakal terus bertambah program-program yang akan saya buat.</p>
+            <span class="code-icon">💻</span>
+            <h2>Logika & Inovasi</h2>
+            <p>Membangun solusi melalui baris kode adalah tantangan yang saya nikmati. Fokus pada skalabilitas data dan antarmuka pengguna yang fungsional adalah prioritas di setiap project saya.</p>
         </div>
     </section>
 
-    <div id="detailModal" class="modal" onclick="closeModal()">
+    <!-- Modals -->
+    <div id="detailModal" class="modal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeModalManual()">&times;</span>
-            <div class="modal-header"><h2 id="modalTitle">Judul Project</h2></div>
+            <div class="modal-header"><h2 id="modalTitle" style="color:#1e293b; margin-bottom:10px;">Judul Karya</h2></div>
             <div class="modal-body">
-                <h4>Penjelasan Sistem:</h4>
-                <p id="modalDesc">Memuat penjelasan...</p>
-                <button class="btn-view-img" onclick="openLightbox()">Lihat Preview Full</button>
+                <h4 style="color:#2563eb; margin-bottom:5px;">Penjelasan Karya:</h4>
+                <p id="modalDesc" style="color:#64748b; font-size:0.95rem;"></p>
+                <button class="btn-view-img" onclick="openLightbox()">Lihat Preview Full Screen</button>
             </div>
         </div>
     </div>
@@ -199,31 +233,21 @@
         <img id="fullImg" src="">
     </div>
 
+    <!-- FOOTER (LATAR GELAP) -->
     <footer>
         <div class="container">
-            <h2>Mampir Yuk</h2>
+            <h2 style="margin-bottom:10px;">Mari Berteman</h2>
+            <p style="opacity:0.7; margin-bottom:20px;">Ikuti update karya saya di Instagram:</p>
             <a href="https://instagram.com/ibnuzaq1" target="_blank" class="ig-link">@ibnuzaq1</a>
-            <p style="margin-top:20px; opacity:0.4;">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
+            <p class="copyright">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
         const projectData = [
-            {
-                title: "Manajemen Informasi",
-                desc: "Website ini dikembangkan menggunakan PHP dan MySQL untuk memberikan informasi data guru, mapel, dan jumlah siswa secara informatif.",
-                img: "program/informasi.png"
-            },
-            {
-                title: "Website Pemilihan (E-Voting)",
-                desc: "Sistem e-voting kolaboratif yang menggantikan kertas. Mempermudah perhitungan suara secara akurat, real-time, dan transparan.",
-                img: "program/voterohis.png"
-            },
-            {
-                title: "Perpustakaan SMK",
-                desc: "Project UKOM Kelas 12. Mengelola sirkulasi buku, data anggota, dan laporan denda otomatis untuk SMK TriDharma 2.",
-                img: "program/perpus.png"
-            }
+            { title: "Manajemen Informasi", desc: "Website ini dikembangkan menggunakan PHP dan MySQL untuk memberikan informasi data guru serta mapel yang diajar secara informatif.", img: "program/informasi.png" },
+            { title: "Website Pemilihan (E-Voting)", desc: "Sistem e-voting digital yang dirancang untuk menggantikan metode konvensional berbasis kertas. Mempermudah perhitungan suara secara akurat.", img: "program/voterohis.png" },
+            { title: "Perpustakaan SMK", desc: "Project manajemen inventaris sekolah mencakup pendataan sirkulasi buku dan sistem denda otomatis untuk SMK TriDharma 2 Bogor.", img: "program/perpus.png" }
         ];
 
         let currentActiveImg = "";
@@ -242,9 +266,8 @@
             document.body.style.overflow = "auto";
         }
 
-        function closeModal() {
-            document.getElementById("detailModal").style.display = "none";
-            document.body.style.overflow = "auto";
+        function closeModal(e) {
+            if (e.target.id === "detailModal") closeModalManual();
         }
 
         function openLightbox() {
