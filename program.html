@@ -50,18 +50,36 @@
         .desc-box { padding: 25px; }
         .desc-box h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; }
         .desc-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
-        .btn-detail { color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .btn-detail { color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
+        
+        /* STYLE LINK KUNJUNGI */
+        .external-link {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid #2563eb;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .external-link:hover {
+            background: #2563eb;
+            color: white;
+        }
 
         /* NEXT PROJECT SECTION */
         .coming-soon {
             text-align: center;
             padding: 60px 20px;
             background: #ffffff;
-            margin-bottom: 0;
             border-top: 1px solid #e5e7eb;
         }
         .coming-soon h2 { color: #1e293b; font-size: 1.8rem; margin-bottom: 10px; }
-        .coming-soon p { color: #64748b; max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
         .rocket-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
         /* MODAL DETAIL */
@@ -75,49 +93,39 @@
             padding: 35px; position: relative; animation: slideUp 0.3s ease;
         }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
-        .modal-header { margin-bottom: 15px; }
-        .modal-header h2 { color: #1e293b; }
-        .modal-body h4 { color: #2563eb; margin: 15px 0 5px; }
-        .modal-body p { color: #4b5563; font-size: 0.95rem; margin-bottom: 25px; }
+        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 28px; color: #cbd5e1; }
         
         .btn-view-img {
             background: #2563eb; color: white; border: none; padding: 15px; 
             border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;
-            display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s;
+            margin-top: 20px; transition: 0.3s;
         }
-        .btn-view-img:hover { background: #1d4ed8; }
 
         /* LIGHTBOX */
         .lightbox {
             display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
             width: 100%; height: 100%; background: #000; justify-content: center; align-items: center;
         }
-        .lightbox img { max-width: 95%; max-height: 90%; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .lightbox img { max-width: 95%; max-height: 90%; }
         .close-x { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
-        .close-modal { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 28px; color: #cbd5e1; }
 
-        /* FOOTER */
         footer { background: #0f172a; color: white; text-align: center; padding: 60px 0 30px; }
-        footer h2 { font-size: 1.8rem; margin-bottom: 10px; }
-        footer p { opacity: 0.7; margin-bottom: 20px; }
-        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
-        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .ig-link { color: #3b82f6; text-decoration: none; font-weight: 600; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container navbar">
-            <a href="index.html" class="logo">Ibnu<span>Porto</span></a>
-            <nav><a href="index.html" class="btn-nav">Kembali</a></nav>
+            <a href="/" class="logo">Ibnu<span>Porto</span></a>
+            <nav><a href="https://instagram.com/ibnuzaq1" class="btn-nav">Kontak Saya</a></nav>
         </div>
     </header>
 
     <section class="sub-hero">
         <div class="container">
             <h1>Karya Program & Project</h1>
-            <p>Penjelasan lengkap mengenai fungsi dan sistem yang saya kembangkan.</p>
+            <p>Satu Domain, Tiga Website. Semua sistem dikembangkan secara mandiri.</p>
         </div>
     </section>
 
@@ -125,30 +133,41 @@
         <div class="gallery">
             
             <div class="gallery-item" onclick="openDetail(0)">
-                <div class="img-box"><img src="program/informasi.png"></div>
+                <div class="img-box"><img src="program/informasi.png" alt="Informasi Manajemen"></div>
                 <div class="desc-box">
                     <h3>Informasi Manajemen</h3>
-                    <p> Website yang menyajikan informasi memudahkan warga sekolah ataupun pengunjung yang ingin mencari informasi.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <p>Website penyaji data guru dan siswa menggunakan PHP & MySQL.</p>
+                    
+                    <a href="/manajinfor/" class="external-link" onclick="event.stopPropagation();">
+                        Kunjungi Website 🔗
+                    </a>
+                    <div class="btn-detail">Info Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(1)">
-                <div class="img-box"><img src="program/voterohis.png"></div>
+                <div class="img-box"><img src="program/voterohis.png" alt="Website Pemilihan"></div>
                 <div class="desc-box">
-                    <h3>Website Pemilihan</h3>
-                    <p>Mendigitalisasi proses voting untuk efisiensi, akurasi, dan penghematan biaya logistik.</p>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <h3>Website Pemilihan (Rohis)</h3>
+                    <p>Sistem E-Voting digital untuk proses pemilihan yang transparan dan real-time.</p>
+                    
+                    <a href="/rohisvote/" class="external-link" onclick="event.stopPropagation();">
+                        Kunjungi Website 🔗
+                    </a>
+                    <div class="btn-detail">Info Detail ℹ️</div>
                 </div>
             </div>
 
             <div class="gallery-item" onclick="openDetail(2)">
-                <div class="img-box"><img src="program/perpus.png"></div>
+                <div class="img-box"><img src="program/perpus.png" alt="Website Perpustakaan"></div>
                 <div class="desc-box">
                     <h3>Website Perpustakaan SMK</h3>
-                    <p>Sistem manajemen buku digital untuk efisiensi peminjaman di sekolah SMK TriDharma 2.</p>
-                    <div class="btn-detail">https://ibnu.infinityfreeapp.com/homepageutama.php</div>
-                    <div class="btn-detail">Selengkapnya Info ℹ️</div>
+                    <p>Manajemen sirkulasi buku dan denda otomatis untuk SMK TriDharma 2.</p>
+                    
+                    <a href="/perpus/" class="external-link" onclick="event.stopPropagation();">
+                        Kunjungi Website 🔗
+                    </a>
+                    <div class="btn-detail">Info Detail ℹ️</div>
                 </div>
             </div>
 
@@ -159,22 +178,18 @@
         <div class="container">
             <span class="rocket-icon">🚀</span>
             <h2>Terus Berinovasi</h2>
-            <p>Kedepannya bakal terus bertambah program-program yang akan saya buat, See you next time.</p>
+            <p>Kedepannya bakal terus bertambah program-program yang akan saya buat.</p>
         </div>
     </section>
 
-    <div id="detailModal" class="modal" onclick="closeModal(event)">
+    <div id="detailModal" class="modal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeModalManual()">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalTitle">Judul Project</h2>
-            </div>
+            <div class="modal-header"><h2 id="modalTitle">Judul Project</h2></div>
             <div class="modal-body">
-                <h4>Fungsi Utama:</h4>
+                <h4>Penjelasan Sistem:</h4>
                 <p id="modalDesc">Memuat penjelasan...</p>
-                <button class="btn-view-img" onclick="openLightbox()">
-                    Lihat Preview Gambar Full
-                </button>
+                <button class="btn-view-img" onclick="openLightbox()">Lihat Preview Full</button>
             </div>
         </div>
     </div>
@@ -184,12 +199,11 @@
         <img id="fullImg" src="">
     </div>
 
-    <footer id="kontak">
+    <footer>
         <div class="container">
-            <h2>Mampir</h2>
-            <p>Kunjungi Instagram saya untuk melihat karya lainnya:</p>
+            <h2>Mampir Yuk</h2>
             <a href="https://instagram.com/ibnuzaq1" target="_blank" class="ig-link">@ibnuzaq1</a>
-            <p class="copyright">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
+            <p style="margin-top:20px; opacity:0.4;">&copy; 2026 Ibnu Zaqi. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -197,17 +211,17 @@
         const projectData = [
             {
                 title: "Manajemen Informasi",
-                desc: "Website ini dikembangkan menggunakan PHP dan MySQL. untuk memberikan informasi baik nama guru serta mapel yang di ajar serta jumlah siswa. Berfungsi sebagai media informasi",
+                desc: "Website ini dikembangkan menggunakan PHP dan MySQL untuk memberikan informasi data guru, mapel, dan jumlah siswa secara informatif.",
                 img: "program/informasi.png"
             },
             {
                 title: "Website Pemilihan (E-Voting)",
-                desc: "Website ini dikembangkan menggunakan bahasa pemrograman PHP dengan sistem manajemen database MySQL. Dibangun secara kolaboratif selama 2 minggu, sistem ini dirancang untuk menggantikan metode konvensional berbasis kertas (paperless). Selain ramah lingkungan, sistem e-voting ini mempermudah proses perhitungan suara secara akurat, real-time, dan transparan.",
+                desc: "Sistem e-voting kolaboratif yang menggantikan kertas. Mempermudah perhitungan suara secara akurat, real-time, dan transparan.",
                 img: "program/voterohis.png"
             },
             {
                 title: "Perpustakaan SMK",
-                desc: "Tugas terakhir kelas 12 membuat project untuk UKOM, project ini menggunakan PHP dan MySQL. Fungsinya adalah mendata sirkulasi buku, anggota, serta laporan denda secara otomatis untuk membantu pustakawan SMK TriDharma 2 dalam memanajemen inventaris sekolah.",
+                desc: "Project UKOM Kelas 12. Mengelola sirkulasi buku, data anggota, dan laporan denda otomatis untuk SMK TriDharma 2.",
                 img: "program/perpus.png"
             }
         ];
@@ -228,7 +242,7 @@
             document.body.style.overflow = "auto";
         }
 
-        function closeModal(e) {
+        function closeModal() {
             document.getElementById("detailModal").style.display = "none";
             document.body.style.overflow = "auto";
         }
